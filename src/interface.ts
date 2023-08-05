@@ -5,6 +5,7 @@ export type ObjectArrayOrString = ObjectType | string | any[];
 export type ProcessFunction = (str: string) => Promise<string>;
 
 export type Locales =
+  | 'en'
   | 'ar'
   | 'cs'
   | 'de'
@@ -26,5 +27,7 @@ export type Locales =
   | 'zh';
 
 export interface IConfig {
-  test: string;
+  skipLocales: string[];
+  mainLocale: Locales;
+  pathToLocalesFolders: string;
 }
