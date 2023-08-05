@@ -1,7 +1,7 @@
 import { assert } from 'chai';
 import { isArray } from '../../src/utils/array';
 
-describe('utils isArray', () => {
+describe('array isArray', () => {
   context('when passing real object', () => {
     it('should return false', () => {
       const toTest = {

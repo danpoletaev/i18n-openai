@@ -3,7 +3,7 @@ import { assert } from 'chai';
 import 'mocha';
 import { generateRandomString, getRandomInt } from '../utils';
 import { before } from 'mocha';
-import { ProcessFunction } from '../../types/common';
+import { ProcessFunction } from '../../src';
 
 const PROCESSED_STRING = 'processed';
 
