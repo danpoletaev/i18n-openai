@@ -1,6 +1,7 @@
 import { Locales } from '../interface';
 
 export const localeToLanguageMap: { [key in Locales]: string } = {
+  en: 'English',
   ar: 'Arabic',
   cs: 'Czech',
   de: 'German',
@@ -21,3 +22,26 @@ export const localeToLanguageMap: { [key in Locales]: string } = {
   vi: 'Vietnamese',
   zh: 'Chinese',
 };
+
+export const allLanguages: Locales[] = [
+  'en',
+  'ar',
+  'cs',
+  'de',
+  'es',
+  'fr',
+  'id',
+  'it',
+  'ja',
+  'ko',
+  'nl',
+  'pl',
+  'pt',
+  'ru',
+  'sk',
+  'th',
+  'tr',
+  'uk',
+  'vi',
+  'zh',
+];
