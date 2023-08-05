@@ -1,4 +1,4 @@
-import { ObjectArrayOrString, ObjectType, ProcessFunction } from '../../types/common';
+import { ObjectArrayOrString, ObjectType, ProcessFunction } from '../interface';
 import { isArray } from './array';
 
 export const processEachStringInObject = async (obj: ObjectArrayOrString, processStr: ProcessFunction) => {
