@@ -4,3 +4,4 @@ node_modules
 i18n-openai.config.js
 /tester
 package-lock.json
+/public

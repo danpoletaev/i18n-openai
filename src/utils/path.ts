@@ -3,17 +3,13 @@ import { IConfig } from '../interface';
 
 /**
  * Return absolute path from path segments
- * @param pathSegment
- * @returns
  */
 export const getPath = (...pathSegment: string[]): string => {
   return path.resolve(process.cwd(), ...pathSegment);
 };
 
 /**
- * Return absolute runtime paths. Path to locales folder and main locale folder
- * @param config
- * @returns
+ * Return absolute runtime paths. Path to locales folder and main locales folder
  */
 export const getRuntimePaths = (config: IConfig) => {
   return {
@@ -24,8 +20,7 @@ export const getRuntimePaths = (config: IConfig) => {
 
 /**
  * Return absolute path to i18n-openai.config.js
- * @returns
  */
-export const getConfigFilePath = async () => {
+export const getConfigFilePath = () => {
   return getPath('i18n-openai.config.js');
 };
