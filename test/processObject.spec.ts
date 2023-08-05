@@ -3,11 +3,17 @@ import { assert } from 'chai';
 import 'mocha';
 import { generateRandomString, getRandomInt } from './test-utils';
 import { before } from 'mocha';
+import { ProcessFunction } from '../types/common';
 
 const PROCESSED_STRING = 'processed';
 
 describe('processEachStringInObject', () => {
-  const processFn: (str: string) => string = (str: string) => PROCESSED_STRING;
+  const processFn: ProcessFunction = (_str: string) =>
+    new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(PROCESSED_STRING);
+      }, 10);
+    });
 
   context('when passing object', () => {
     context('empty object', () => {
@@ -15,7 +21,9 @@ describe('processEachStringInObject', () => {
         const emptyObj = {};
         const processed = JSON.stringify(emptyObj);
 
-        assert.equal(processed === JSON.stringify(processEachStringInObject(emptyObj, processFn)), true);
+        processEachStringInObject(emptyObj, processFn).then((res) =>
+          assert.equal(processed === JSON.stringify(res), true),
+        );
       });
     });
 
@@ -35,15 +43,14 @@ describe('processEachStringInObject', () => {
       it('should return true', () => {
         const processed = JSON.stringify(randomProcessedObject);
 
-        assert.equal(
-          processed === JSON.stringify(processEachStringInObject(randomObjectWithProperties, processFn)),
-          true,
+        processEachStringInObject(randomObjectWithProperties, processFn).then((res) =>
+          assert.equal(processed === JSON.stringify(res), true),
         );
       });
     });
 
     context('object with nested objects', () => {
-      it('should return true', () => {
+      it('should return true', async () => {
         const toTest = {
           test: {
             test: {
@@ -60,12 +67,14 @@ describe('processEachStringInObject', () => {
           },
         });
 
-        assert.equal(processed === JSON.stringify(processEachStringInObject(toTest, processFn)), true);
+        processEachStringInObject(toTest, processFn).then((res) =>
+          assert.equal(processed === JSON.stringify(res), true),
+        );
       });
     });
 
     context('object with nested arrays', () => {
-      it('should return true', () => {
+      it('should return true', async () => {
         const toTest = {
           test: {
             test: [
@@ -96,7 +105,9 @@ describe('processEachStringInObject', () => {
           },
         });
 
-        assert.equal(processed === JSON.stringify(processEachStringInObject(toTest, processFn)), true);
+        processEachStringInObject(toTest, processFn).then((res) =>
+          assert.equal(processed === JSON.stringify(res), true),
+        );
       });
     });
 
@@ -110,7 +121,9 @@ describe('processEachStringInObject', () => {
           test: null,
         });
 
-        assert.equal(processed === JSON.stringify(processEachStringInObject(toTest, processFn)), true);
+        processEachStringInObject(toTest, processFn).then((res) =>
+          assert.equal(processed === JSON.stringify(res), true),
+        );
       });
     });
 
@@ -124,38 +137,46 @@ describe('processEachStringInObject', () => {
           test: null,
         });
 
-        assert.equal(processed === JSON.stringify(processEachStringInObject(toTest, processFn)), true);
+        processEachStringInObject(toTest, processFn).then((res) =>
+          assert.equal(processed === JSON.stringify(res), true),
+        );
       });
     });
   });
 
   context('when passing array', () => {
     context('empty array', () => {
-      it('should return true', () => {
+      it('should return true', async () => {
         const toTest: any[] = [];
         const processed = JSON.stringify([]);
 
-        assert.equal(processed === JSON.stringify(processEachStringInObject(toTest, processFn)), true);
+        processEachStringInObject(toTest, processFn).then((res) =>
+          assert.equal(processed === JSON.stringify(res), true),
+        );
       });
     });
 
     context('array of string', () => {
-      it('should return true', () => {
+      it('should return true', async () => {
         const toTest = { test: ['test', 'test', 'test', 'test'] };
         const processed = JSON.stringify({
           test: [PROCESSED_STRING, PROCESSED_STRING, PROCESSED_STRING, PROCESSED_STRING],
         });
 
-        assert.equal(processed === JSON.stringify(processEachStringInObject(toTest, processFn)), true);
+        processEachStringInObject(toTest, processFn).then((res) =>
+          assert.equal(processed === JSON.stringify(res), true),
+        );
       });
     });
 
     context('nested array', () => {
-      it('should return true', () => {
+      it('should return true', async () => {
         const toTest = { test: [{ test: ['test'] }] };
         const processed = JSON.stringify({ test: [{ test: [PROCESSED_STRING] }] });
 
-        assert.equal(processed === JSON.stringify(processEachStringInObject(toTest, processFn)), true);
+        processEachStringInObject(toTest, processFn).then((res) =>
+          assert.equal(processed === JSON.stringify(res), true),
+        );
       });
     });
   });
