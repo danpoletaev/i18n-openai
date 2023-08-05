@@ -2,12 +2,19 @@
   "name": "i18n-openai",
   "version": "1.0.0",
   "description": "Automatic i18n translation using openai",
-  "main": "index.ts",
+  "main": "index.js",
+  "type": "commonjs",
   "scripts": {
+    "build": "tsc",
+    "clean": "tsc --build --clean",
     "test": "mocha --require ts-node/register test/**/*.spec.ts",
-    "build": "npx tsc",
+    "start": "npm run build && node bin/i18n-openai.mjs",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json"
+  },
+  "bin": {
+    "i18n-openai": "./bin/next-sitemap.mjs",
+    "i18n-openai-cjs": "./bin/next-sitemap.cjs"
   },
   "author": "Daniil Poletaev",
   "license": "ISC",
@@ -23,6 +30,18 @@
     "typescript": "^5.1.6"
   },
   "files": [
-    "lib/**/*"
-  ]
+    "lib/**/*",
+    "dist",
+    "bin"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    }
+  },
+  "dependencies": {
+    "commander": "^11.0.0",
+    "figlet": "^1.6.0"
+  }
 }
