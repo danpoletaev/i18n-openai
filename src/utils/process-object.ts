@@ -1,17 +1,17 @@
-import { ObjectArrayOrString, ObjectType, ProcessFunction } from '../types/common';
-import { isArray } from './utils';
+import { ObjectArrayOrString, ObjectType, ProcessFunction } from '../../types/common';
+import { isArray } from './array';
 
 export const processEachStringInObject = async (obj: ObjectArrayOrString, processStr: ProcessFunction) => {
   const result: ObjectType = {};
 
-  if (JSON.stringify(obj) == JSON.stringify([])) {
+  if (JSON.stringify(obj) === JSON.stringify([])) {
     return [];
   }
   if (typeof obj === 'string') {
     return await processStr(obj);
   }
 
-  for (let [key, value] of Object.entries(obj)) {
+  for (const [key, value] of Object.entries(obj)) {
     let v = null;
 
     if (typeof value === 'string') {

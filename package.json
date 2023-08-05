@@ -4,7 +4,7 @@
   "description": "Automatic i18n translation using openai",
   "main": "index.ts",
   "scripts": {
-    "test": "mocha --require ts-node/register test/*.spec.ts",
+    "test": "mocha --require ts-node/register test/**/*.spec.ts",
     "build": "npx tsc",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json"

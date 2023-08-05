@@ -1,9 +1,9 @@
-import { processEachStringInObject } from '../src/processObject';
+import { processEachStringInObject } from '../../src/utils/process-object';
 import { assert } from 'chai';
 import 'mocha';
-import { generateRandomString, getRandomInt } from './test-utils';
+import { generateRandomString, getRandomInt } from '../utils';
 import { before } from 'mocha';
-import { ProcessFunction } from '../types/common';
+import { ProcessFunction } from '../../types/common';
 
 const PROCESSED_STRING = 'processed';
 
