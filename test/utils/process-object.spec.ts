@@ -21,7 +21,7 @@ describe('processEachStringInObject', () => {
         const emptyObj = {};
         const processed = JSON.stringify(emptyObj);
 
-        processEachStringInObject(emptyObj, processFn).then((res) =>
+        processEachStringInObject(emptyObj, processFn, 'en').then((res) =>
           assert.equal(processed === JSON.stringify(res), true),
         );
       });
@@ -43,7 +43,7 @@ describe('processEachStringInObject', () => {
       it('should return true', () => {
         const processed = JSON.stringify(randomProcessedObject);
 
-        processEachStringInObject(randomObjectWithProperties, processFn).then((res) =>
+        processEachStringInObject(randomObjectWithProperties, processFn, 'en').then((res) =>
           assert.equal(processed === JSON.stringify(res), true),
         );
       });
@@ -67,7 +67,7 @@ describe('processEachStringInObject', () => {
           },
         });
 
-        processEachStringInObject(toTest, processFn).then((res) =>
+        processEachStringInObject(toTest, processFn, 'en').then((res) =>
           assert.equal(processed === JSON.stringify(res), true),
         );
       });
@@ -105,7 +105,7 @@ describe('processEachStringInObject', () => {
           },
         });
 
-        processEachStringInObject(toTest, processFn).then((res) =>
+        processEachStringInObject(toTest, processFn, 'en').then((res) =>
           assert.equal(processed === JSON.stringify(res), true),
         );
       });
@@ -121,7 +121,7 @@ describe('processEachStringInObject', () => {
           test: null,
         });
 
-        processEachStringInObject(toTest, processFn).then((res) =>
+        processEachStringInObject(toTest, processFn, 'en').then((res) =>
           assert.equal(processed === JSON.stringify(res), true),
         );
       });
@@ -137,7 +137,7 @@ describe('processEachStringInObject', () => {
           test: null,
         });
 
-        processEachStringInObject(toTest, processFn).then((res) =>
+        processEachStringInObject(toTest, processFn, 'en').then((res) =>
           assert.equal(processed === JSON.stringify(res), true),
         );
       });
@@ -150,7 +150,7 @@ describe('processEachStringInObject', () => {
         const toTest: any[] = [];
         const processed = JSON.stringify([]);
 
-        processEachStringInObject(toTest, processFn).then((res) =>
+        processEachStringInObject(toTest, processFn, 'en').then((res) =>
           assert.equal(processed === JSON.stringify(res), true),
         );
       });
@@ -163,7 +163,7 @@ describe('processEachStringInObject', () => {
           test: [PROCESSED_STRING, PROCESSED_STRING, PROCESSED_STRING, PROCESSED_STRING],
         });
 
-        processEachStringInObject(toTest, processFn).then((res) =>
+        processEachStringInObject(toTest, processFn, 'en').then((res) =>
           assert.equal(processed === JSON.stringify(res), true),
         );
       });
@@ -174,7 +174,7 @@ describe('processEachStringInObject', () => {
         const toTest = { test: [{ test: ['test'] }] };
         const processed = JSON.stringify({ test: [{ test: [PROCESSED_STRING] }] });
 
-        processEachStringInObject(toTest, processFn).then((res) =>
+        processEachStringInObject(toTest, processFn, 'en').then((res) =>
           assert.equal(processed === JSON.stringify(res), true),
         );
       });

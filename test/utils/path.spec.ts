@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { IConfig, Locales } from '../../src';
+import { IConfig } from '../../src';
 import { getPath, getRuntimePaths } from '../../src/utils/path';
 import * as path from 'node:path';
 
@@ -16,6 +16,7 @@ describe('path', () => {
         skipLocales: ['default'],
         mainLocale: 'en',
         pathToLocalesFolders: 'test',
+        customPrompt: '',
       };
       const test = getRuntimePaths(config);
       const shouldBe = {

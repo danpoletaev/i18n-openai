@@ -35,6 +35,8 @@ export interface IConfig {
   customPrompt: string;
 }
 
+export type PartialConfig = Partial<IConfig>;
+
 export interface IRuntimePaths {
   LOCALES_FOLDER: string;
   MAIN_LOCALE_FOLDER: string;

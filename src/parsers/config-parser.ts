@@ -1,6 +1,6 @@
 import { getConfigFilePath, getPath, getRuntimePaths } from '../utils/path';
 import { Logger } from '../logger';
-import { IConfig, Locales } from '../interface';
+import { IConfig, Locales, PartialConfig } from '../interface';
 import defaultConfig from '../resources/default-config';
 import { isLocaleCorrect } from '../utils/langauges';
 import fs from 'fs';
@@ -8,7 +8,7 @@ import fs from 'fs';
 /** Class for parsing config */
 export class ConfigParser {
   private readonly _config: IConfig;
-  constructor(config?: IConfig) {
+  constructor(config?: PartialConfig) {
     this._config = this.validateConfig(config ?? this.loadBaseConfig());
   }
 
@@ -52,15 +52,17 @@ export class ConfigParser {
    * Validates config and adds variables, which were not provided by user
    * @returns config
    */
-  private validateConfig(config: IConfig): IConfig {
+  private validateConfig(config: PartialConfig): IConfig {
     this.validateMainLocale(config?.mainLocale ?? defaultConfig.mainLocale);
     this.validatePathToLocalesFolders(config?.pathToLocalesFolders ?? defaultConfig.pathToLocalesFolders);
 
+    const { skipLocales, mainLocale, pathToLocalesFolders, customPrompt } = defaultConfig;
+
     return {
-      skipLocales: config?.skipLocales ?? defaultConfig.skipLocales,
-      mainLocale: config?.mainLocale ?? defaultConfig.mainLocale,
-      pathToLocalesFolders: config?.pathToLocalesFolders ?? defaultConfig.pathToLocalesFolders,
-      customPrompt: config?.customPrompt ?? defaultConfig.customPrompt,
+      skipLocales: config?.skipLocales ?? skipLocales,
+      mainLocale: config?.mainLocale ?? mainLocale,
+      pathToLocalesFolders: config?.pathToLocalesFolders ?? pathToLocalesFolders,
+      customPrompt: config?.customPrompt ?? customPrompt,
     };
   }
 

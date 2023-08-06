@@ -29,6 +29,7 @@ describe('getFiltered', () => {
       skipLocales: ['default'],
       pathToLocalesFolders: 'public/locales',
       mainLocale: 'en',
+      customPrompt: '',
     },
     runtimePaths: {
       LOCALES_FOLDER: 'public/locales',

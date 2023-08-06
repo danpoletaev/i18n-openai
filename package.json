@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc",
     "clean": "tsc --build --clean",
-    "test": "mocha --require ts-node/register test/*.spec.ts && mocha --require ts-node/register test/**/*.spec.ts",
+    "test": "mocha -r ts-node/register 'test/**/*.ts'",
     "start": "npm run build && node bin/i18n-openai.mjs",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json"
@@ -44,6 +44,7 @@
   },
   "dependencies": {
     "commander": "^11.0.0",
+    "dotenv": "^16.3.1",
     "figlet": "^1.6.0",
     "openai": "^3.3.0"
   }

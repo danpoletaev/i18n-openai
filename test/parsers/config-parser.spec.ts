@@ -1,5 +1,5 @@
 import { assert, expect } from 'chai';
-import { IConfig, Locales } from '../../src';
+import { IConfig, Locales, PartialConfig } from '../../src';
 import { ConfigParser } from '../../src/parsers/config-parser';
 // @ts-ignore
 import mock from 'mock-fs';
@@ -7,7 +7,7 @@ import mock from 'mock-fs';
 describe('loadConfig', () => {
   context('when mainLocale exist', () => {
     it('should return true', () => {
-      const config: IConfig = {
+      const config: PartialConfig = {
         mainLocale: 'en',
         skipLocales: ['default'],
         pathToLocalesFolders: 'src',
@@ -18,7 +18,7 @@ describe('loadConfig', () => {
 
   context('when mainLocale does not exist', () => {
     it('should return true', () => {
-      const config: IConfig = {
+      const config: PartialConfig = {
         mainLocale: 'sada' as Locales,
         skipLocales: ['default'],
         pathToLocalesFolders: 'src',
@@ -28,7 +28,7 @@ describe('loadConfig', () => {
   });
 
   context('when custom pathToLocale exists', () => {
-    let config: IConfig = {
+    let config: PartialConfig = {
       mainLocale: 'en' as Locales,
       skipLocales: ['default'],
       pathToLocalesFolders: 'newFolder/locales',
@@ -56,6 +56,7 @@ describe('loadConfig', () => {
       mainLocale: 'en' as Locales,
       skipLocales: ['default'],
       pathToLocalesFolders: 'newFolder/locales',
+      customPrompt: '',
     };
     before(() => {
       mock({
