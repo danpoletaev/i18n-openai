@@ -27,6 +27,18 @@ export class Logger {
     return this.log('\x1b[32m', `✅ `, ...text);
   }
 
+  static incorrectFilteredLocales(locale: string, possibleLocales: string) {
+    Logger.error(
+      `Make sure you entered correct locale as argument (${locale}) or make sure you specified correct path to locales folder in i18n-openai.config.js (default public/locales). Possible locales - ${possibleLocales}`,
+    );
+  }
+
+  static incorrectFilteredFiles(files: string, possibleFiles: string) {
+    Logger.error(
+      `Make sure you entered correct files as arguments (${files}) or make sure you specified correct path to locales folder in i18n-openai.config.js (default public/locales). Possible files - ${possibleFiles}`,
+    );
+  }
+
   static noConfigFile() {
     Logger.error('Unable to find i18n-openai.config.js or custom config file.');
   }
