@@ -4,7 +4,7 @@ export type ObjectType = { [key: string]: string | any[] | any };
 
 export type ObjectArrayOrString = ObjectType | string | any[];
 
-export type ProcessFunction = (str: string) => Promise<string>;
+export type ProcessFunction = (str: string, locale: string) => Promise<string | null>;
 
 export type Locales =
   | 'en'
@@ -32,6 +32,7 @@ export interface IConfig {
   skipLocales: string[];
   mainLocale: Locales;
   pathToLocalesFolders: string;
+  customPrompt: string;
 }
 
 export interface IRuntimePaths {
