@@ -1,8 +1,9 @@
 {
   "name": "i18n-openai",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Automatic i18n translation using openai",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "build": "tsc",
     "clean": "tsc --build --clean",
@@ -35,12 +36,6 @@
     "dist",
     "bin"
   ],
-  "exports": {
-    ".": {
-      "import": "./dist/esm/index.js",
-      "require": "./dist/cjs/index.js"
-    }
-  },
   "dependencies": {
     "commander": "^11.0.0",
     "dotenv": "^16.3.1",
