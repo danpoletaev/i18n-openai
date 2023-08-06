@@ -66,7 +66,7 @@ export class ConfigParser {
   /**
    * Loads config provided by user or loads default config
    */
-  async loadConfig() {
+  loadConfig() {
     const runtimePaths = getRuntimePaths(this._config);
 
     return {
