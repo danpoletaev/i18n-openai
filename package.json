@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "description": "Automatic i18n translation using openai",
   "main": "index.js",
-  "type": "commonjs",
   "scripts": {
     "build": "tsc",
     "clean": "tsc --build --clean",
@@ -13,8 +12,8 @@
     "lint": "tslint -p tsconfig.json"
   },
   "bin": {
-    "i18n-openai": "./bin/next-sitemap.mjs",
-    "i18n-openai-cjs": "./bin/next-sitemap.cjs"
+    "i18n-openai": "/bin/next-sitemap.mjs",
+    "i18n-openai-cjs": "/bin/next-sitemap.cjs"
   },
   "author": "Daniil Poletaev",
   "license": "MIT",
