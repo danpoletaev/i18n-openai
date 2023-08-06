@@ -1,8 +1,10 @@
+import { IParsedArguments, Locales } from '../interface';
+
 const { Command } = require('commander');
 
 /** Class for parsing program arguments */
 export class ArgumentsParser {
-  private readonly _locales: string[];
+  private readonly _locales: Locales[];
   private readonly _files: string[];
 
   constructor() {
@@ -16,11 +18,21 @@ export class ArgumentsParser {
       .parse(process.argv);
 
     const options = program.opts();
-    const localeString = options?.Locale?.split(',') ?? [];
-    const filesString = options?.Files?.split(',') ?? [];
+    const localeString = options?.Locale?.split(',');
+    const filesString = options?.Files?.split(',');
 
     this._locales = localeString;
     this._files = filesString;
+  }
+
+  /**
+   * Gets parsed arguments provided by user
+   */
+  getArguments(): IParsedArguments {
+    return {
+      locales: this._locales,
+      files: this._files,
+    };
   }
 
   /** Returns locales provided as arguments */
