@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc",
     "clean": "tsc --build --clean",
-    "test": "mocha --require ts-node/register test/**/*.spec.ts",
+    "test": "mocha --require ts-node/register test/*.spec.ts && mocha --require ts-node/register test/**/*.spec.ts",
     "start": "npm run build && node bin/i18n-openai.mjs",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json"
@@ -21,8 +21,10 @@
   "devDependencies": {
     "@types/chai": "^4.3.5",
     "@types/mocha": "^10.0.1",
+    "@types/mock-fs": "^4.13.1",
     "chai": "^4.3.7",
     "mocha": "^10.2.0",
+    "mock-fs": "^5.2.0",
     "prettier": "^3.0.1",
     "ts-node": "^10.9.1",
     "tslint": "^6.1.3",
