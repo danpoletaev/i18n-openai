@@ -1,7 +1,7 @@
 import { getConfigFilePath, getPath, getRuntimePaths } from '../utils/path';
 import { Logger } from '../logger';
 import { IConfig, Locales } from '../interface';
-import defaultConfig from './default-config';
+import defaultConfig from '../resources/default-config';
 import { isLocaleCorrect } from '../utils/langauges';
 import fs from 'fs';
 
