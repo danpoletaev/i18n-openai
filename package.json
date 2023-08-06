@@ -1,6 +1,6 @@
 {
   "name": "i18n-openai",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Automatic i18n translation using openai",
   "main": "index.js",
   "type": "commonjs",
@@ -17,7 +17,7 @@
     "i18n-openai-cjs": "./bin/next-sitemap.cjs"
   },
   "author": "Daniil Poletaev",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@types/chai": "^4.3.5",
     "@types/mocha": "^10.0.1",
