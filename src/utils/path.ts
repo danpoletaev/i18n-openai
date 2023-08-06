@@ -1,5 +1,5 @@
 import path from 'node:path';
-import { IConfig } from '../interface';
+import { IConfig, IRuntimePaths } from '../interface';
 
 /**
  * Return absolute path from path segments
@@ -11,7 +11,7 @@ export const getPath = (...pathSegment: string[]): string => {
 /**
  * Return absolute runtime paths. Path to locales folder and main locales folder
  */
-export const getRuntimePaths = (config: IConfig) => {
+export const getRuntimePaths = (config: IConfig): IRuntimePaths => {
   return {
     LOCALES_FOLDER: getPath(config.pathToLocalesFolders),
     MAIN_LOCALE_FOLDER: getPath(config.pathToLocalesFolders + '/' + config.mainLocale),

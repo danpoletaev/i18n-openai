@@ -1,6 +1,9 @@
 import { ObjectArrayOrString, ObjectType, ProcessFunction } from '../interface';
 import { isArray } from './array';
 
+/**
+ * Recursively processes each string in object with passed processStr function
+ */
 export const processEachStringInObject = async (obj: ObjectArrayOrString, processStr: ProcessFunction) => {
   const result: ObjectType = {};
 
