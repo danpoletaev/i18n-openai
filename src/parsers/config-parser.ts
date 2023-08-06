@@ -60,6 +60,7 @@ export class ConfigParser {
       skipLocales: config?.skipLocales ?? defaultConfig.skipLocales,
       mainLocale: config?.mainLocale ?? defaultConfig.mainLocale,
       pathToLocalesFolders: config?.pathToLocalesFolders ?? defaultConfig.pathToLocalesFolders,
+      customPrompt: config?.customPrompt ?? defaultConfig.customPrompt,
     };
   }
 

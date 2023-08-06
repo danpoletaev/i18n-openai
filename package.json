@@ -44,6 +44,7 @@
   },
   "dependencies": {
     "commander": "^11.0.0",
-    "figlet": "^1.6.0"
+    "figlet": "^1.6.0",
+    "openai": "^3.3.0"
   }
 }
