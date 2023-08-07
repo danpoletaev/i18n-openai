@@ -1,6 +1,6 @@
 {
   "name": "i18n-openai",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Automatic i18n translation using openai",
   "main": "index.js",
   "type": "commonjs",
@@ -8,7 +8,7 @@
     "build": "tsc",
     "clean": "tsc --build --clean",
     "test": "mocha -r ts-node/register 'test/**/*.ts'",
-    "start": "npm run build && node bin/i18n-openai.mjs",
+    "start": "npm run build && node bin/index.js",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json"
   },
