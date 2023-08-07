@@ -1,2 +1,5 @@
-// Export types
-export * from './interface.js';
+#!/usr/bin/env node
+import { CLI } from './cli';
+
+// Execute CLI
+new CLI().execute();
