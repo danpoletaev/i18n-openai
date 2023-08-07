@@ -2,6 +2,7 @@ import { Configuration, CreateChatCompletionRequest, OpenAIApi } from 'openai';
 import { Locales } from './interface';
 import { localeToLanguageMap } from './resources/languages';
 import defaultConfig from './resources/default-config';
+import { Logger } from './logger';
 
 const EMPTY_MESSAGE = null;
 const LANGUAGE_REPLACEMENT = '{0}';
@@ -47,21 +48,30 @@ export class Openai {
    * Translates given value
    */
   async translateString(value: string, locale: string) {
-    const translatedResponse = await this._openai.createChatCompletion(this.createRequest(value, locale as Locales));
+    try {
+      const translatedResponse = await this._openai.createChatCompletion(this.createRequest(value, locale as Locales));
 
-    if (translatedResponse.status === 200) {
-      const firstChoice = translatedResponse.data.choices?.[0];
-      if (firstChoice.finish_reason === 'stop') {
-        const translatedText = firstChoice?.message?.content;
-        if (translatedText?.substring(0, 2) === '\n\n') {
-          return translatedText.substring(0, 2);
+      if (translatedResponse.status === 200) {
+        const firstChoice = translatedResponse.data.choices?.[0];
+        if (firstChoice.finish_reason === 'stop') {
+          const translatedText = firstChoice?.message?.content;
+          if (translatedText?.substring(0, 2) === '\n\n') {
+            return translatedText.substring(0, 2);
+          }
+          if (!translatedText) {
+            return EMPTY_MESSAGE;
+          }
+          return translatedText;
         }
-        if (!translatedText) {
-          return EMPTY_MESSAGE;
-        }
-        return translatedText;
       }
+      return EMPTY_MESSAGE;
+    } catch (err) {
+      if ((err as any).response.status === 401) {
+        Logger.error('Unauthorized. Check your api key.');
+        process.exit(1);
+      }
+      Logger.warn('Network error. Trying to continue translation');
+      return EMPTY_MESSAGE;
     }
-    return EMPTY_MESSAGE;
   }
 }

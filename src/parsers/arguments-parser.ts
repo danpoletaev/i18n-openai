@@ -14,11 +14,11 @@ export class ArgumentsParser {
       .version('1.0.0')
       .description('An example CLI for managing a directory')
       .option('-locales  [value]', 'List of locales to translate')
-      .option('-file  [value]', 'List of files to translate')
+      .option('-files  [value]', 'List of files to translate')
       .parse(process.argv);
 
     const options = program.opts();
-    const localeString = options?.Locale?.split(',');
+    const localeString = options?.Locales?.split(',');
     const filesString = options?.Files?.split(',');
 
     this._locales = localeString;
