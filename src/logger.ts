@@ -10,7 +10,7 @@ export class Logger {
    * Generic error logger
    */
   static error(...text: string[]) {
-    return this.log(`\x1b[31m`, `❌`, ...text);
+    return this.log(`\x1b[31m`, ` ❌ `, ...text);
   }
 
   /**

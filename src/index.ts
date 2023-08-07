@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 import { CLI } from './cli';
+import { EnvParser } from './parsers/env-parser';
 require('dotenv').config();
 
-console.log(process.env.OPENAI_API_KEY);
+const apiKey = new EnvParser().loadEnv();
 
 // Execute CLI
-new CLI().execute();
+new CLI(apiKey).execute();
