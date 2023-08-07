@@ -20,6 +20,7 @@ jobs:
           node-version: 16
       - run: npm ci
       - run: npm run clean
+      - run: npm run format
       - run: npm run lint
       - run: npm run build
       - run: npm test

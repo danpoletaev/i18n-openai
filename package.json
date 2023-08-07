@@ -9,7 +9,7 @@
     "clean": "tsc --build --clean",
     "test": "mocha -r ts-node/register 'test/**/*.ts'",
     "start": "npm run build && node bin/index.js",
-    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json"
   },
   "bin": {
