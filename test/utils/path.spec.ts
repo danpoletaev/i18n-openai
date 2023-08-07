@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { IConfig } from '../../src';
+import { IConfig } from '../../src/interface';
 import { getPath, getRuntimePaths } from '../../src/utils/path';
 import * as path from 'node:path';
 

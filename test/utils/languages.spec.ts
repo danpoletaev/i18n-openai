@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 import { isLocaleCorrect } from '../../src/utils/langauges';
-import { Locales } from '../../src';
+import { Locales } from '../../src/interface';
 
 describe('language', () => {
   context('when passed correct locales', () => {

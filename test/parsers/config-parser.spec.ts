@@ -1,5 +1,5 @@
 import { assert, expect } from 'chai';
-import { IConfig, Locales, PartialConfig } from '../../src';
+import { IConfig, Locales, PartialConfig } from '../../src/interface';
 import { ConfigParser } from '../../src/parsers/config-parser';
 // @ts-ignore
 import mock from 'mock-fs';

@@ -1,8 +1,8 @@
-import { IConfigWithPaths, IParsedArguments } from '../src';
 import { assert, expect } from 'chai';
 import { FileProcessor } from '../src/file-processor';
 // @ts-ignore
 import mock from 'mock-fs';
+import { IConfigWithPaths, IParsedArguments } from '../src/interface';
 
 describe('getFiltered', () => {
   beforeEach(() => {
