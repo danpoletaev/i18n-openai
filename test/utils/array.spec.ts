@@ -29,7 +29,7 @@ describe('array isArray', () => {
 
     context('empty array', () => {
       it('should return true ', () => {
-        const toTest: any[] = [];
+        const toTest: [] = [];
 
         assert.equal(isArray(toTest), true);
       });

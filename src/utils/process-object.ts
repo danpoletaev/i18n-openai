@@ -1,4 +1,4 @@
-import { Locales, ObjectArrayOrString, ObjectType, ProcessFunction } from '../interface';
+import { ObjectArrayOrString, ObjectType, ProcessFunction } from '../interface';
 import { isArray } from './array';
 
 /**

@@ -1,7 +1,6 @@
 import { assert, expect } from 'chai';
 import { IConfig, Locales, PartialConfig } from '../../src/interface';
 import { ConfigParser } from '../../src/parsers/config-parser';
-// @ts-ignore
 import mock from 'mock-fs';
 
 describe('loadConfig', () => {
@@ -28,7 +27,7 @@ describe('loadConfig', () => {
   });
 
   context('when custom pathToLocale exists', () => {
-    let config: PartialConfig = {
+    const config: PartialConfig = {
       mainLocale: 'en' as Locales,
       skipLocales: ['default'],
       pathToLocalesFolders: 'newFolder/locales',
@@ -52,7 +51,7 @@ describe('loadConfig', () => {
   });
 
   context('when custom pathToLocale does not exist', () => {
-    let config: IConfig = {
+    const config: IConfig = {
       mainLocale: 'en' as Locales,
       skipLocales: ['default'],
       pathToLocalesFolders: 'newFolder/locales',

@@ -27,7 +27,7 @@ export class FileProcessor {
       .filter(
         (locale) => !this._config.config.skipLocales.includes(locale) && locale !== this._config.config.mainLocale,
       )
-      .filter((locale) => (!!localesArg ? localesArg.includes(locale) : true));
+      .filter((locale) => (localesArg ? localesArg.includes(locale) : true));
 
     if (filteredAllLocales.length === 0) {
       Logger.incorrectFilteredLocales(localesArg?.join(',') ?? '', allLocalesInFolder.join(','));
@@ -47,7 +47,7 @@ export class FileProcessor {
     const filesArg = this._arguments.files;
 
     const filteredAllFilesInMainLocaleFolder = allFilesInMainLocaleFolder.filter((file) =>
-      !!filesArg ? filesArg.includes(file) : true,
+      filesArg ? filesArg.includes(file) : true,
     );
     if (filteredAllFilesInMainLocaleFolder.length === 0) {
       Logger.incorrectFilteredFiles(filesArg?.join(',') ?? '', allFilesInMainLocaleFolder.join(','));

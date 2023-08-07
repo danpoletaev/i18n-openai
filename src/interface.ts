@@ -1,5 +1,4 @@
-import { getPath } from './utils/path';
-
+/* eslint-disable  @typescript-eslint/no-explicit-any*/
 export type ObjectType = { [key: string]: string | any[] | any };
 
 export type ObjectArrayOrString = ObjectType | string | any[];

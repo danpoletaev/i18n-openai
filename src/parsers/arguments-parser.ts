@@ -1,6 +1,5 @@
 import { IParsedArguments, Locales } from '../interface';
-
-const { Command } = require('commander');
+import { Command } from 'commander';
 
 /** Class for parsing program arguments */
 export class ArgumentsParser {

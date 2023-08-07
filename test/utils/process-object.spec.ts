@@ -1,14 +1,29 @@
 import { processEachStringInObject } from '../../src/utils/process-object';
 import { assert } from 'chai';
 import 'mocha';
-import { generateRandomString, getRandomInt } from '../utils';
 import { before } from 'mocha';
 import { ProcessFunction } from '../../src/interface';
 
 const PROCESSED_STRING = 'processed';
 
+function getRandomInt(min: number, max: number) {
+  return Math.random() * (max - min) + min;
+}
+
+function generateRandomString(length: number) {
+  let result = '';
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const charactersLength = characters.length;
+  let counter = 0;
+  while (counter < length) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    counter += 1;
+  }
+  return result;
+}
+
 describe('processEachStringInObject', () => {
-  const processFn: ProcessFunction = (_str: string) =>
+  const processFn: ProcessFunction = () =>
     new Promise((resolve) => {
       setTimeout(() => {
         resolve(PROCESSED_STRING);
@@ -28,8 +43,8 @@ describe('processEachStringInObject', () => {
     });
 
     context('random object with [1..10] properties and without nested objects', () => {
-      let randomObjectWithProperties: any = {};
-      let randomProcessedObject: any = {};
+      const randomObjectWithProperties: Record<string, string> = {};
+      const randomProcessedObject: Record<string, string> = {};
 
       before(() => {
         const randomNum = getRandomInt(1, 10);
@@ -147,7 +162,7 @@ describe('processEachStringInObject', () => {
   context('when passing array', () => {
     context('empty array', () => {
       it('should return true', async () => {
-        const toTest: any[] = [];
+        const toTest: [] = [];
         const processed = JSON.stringify([]);
 
         processEachStringInObject(toTest, processFn, 'en').then((res) =>

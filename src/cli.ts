@@ -5,6 +5,7 @@ import { FileProcessor } from './file-processor';
 import { IFiltered, ProcessFunction } from './interface';
 import { Translator } from './translator';
 import { Openai } from './openai';
+/* eslint-disable @typescript-eslint/no-var-requires*/
 const figlet = require('figlet');
 
 /**

@@ -66,6 +66,7 @@ export class Openai {
       }
       return EMPTY_MESSAGE;
     } catch (err) {
+      /* eslint-disable  @typescript-eslint/no-explicit-any*/
       if ((err as any).response.status === 401) {
         Logger.error('Unauthorized. Check your api key.');
         process.exit(1);

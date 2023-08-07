@@ -2,7 +2,7 @@ export class Logger {
   /**
    * Generic log
    */
-  static log(emoji: string, ...text: string[]): any {
+  static log(emoji: string, ...text: string[]): void {
     return console.log(emoji, `[i18n-openai]`, ...text);
   }
 

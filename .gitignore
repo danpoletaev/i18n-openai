@@ -1,6 +1,6 @@
 node_modules
 /dist
-i18n-openai.config.js
+tester/i18n-openai.config.js
 /tester
 package-lock.json
 /public
