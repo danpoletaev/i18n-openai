@@ -1,6 +1,6 @@
 {
   "name": "i18n-openai",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Automatic i18n translation using openai",
   "main": "index.js",
   "type": "commonjs",
@@ -17,6 +17,24 @@
   },
   "author": "Daniil Poletaev",
   "license": "MIT",
+  "repository": "https://github.com/danpoletaev/i18n-openai",
+  "funding": [
+    {
+      "url": "https://github.com/danpoletaev/i18n-openai"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/danpoletaev/i18n-openai/issues"
+  },
+  "keywords": [
+    "openai",
+    "i18n",
+    "automatic",
+    "translation",
+    "react",
+    "next",
+    "json"
+  ],
   "devDependencies": {
     "@types/chai": "^4.3.5",
     "@types/mocha": "^10.0.1",
