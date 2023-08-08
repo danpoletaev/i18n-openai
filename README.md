@@ -2,7 +2,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/danpoletaev/i18n-openai/pulls)
 ![Github Actions](https://github.com/danpoletaev/i18n-openai/actions/workflows/npm-publish.yml/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
-$coverage$
+![Coverage](https://img.shields.io/badge/Coverage-85%25-83A603.svg?prefix=$coverage$)
 
 ## Table of contents
 
