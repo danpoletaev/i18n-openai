@@ -1,6 +1,6 @@
 {
   "name": "i18n-openai",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Automatic i18n translation using openai",
   "main": "index.js",
   "type": "commonjs",
