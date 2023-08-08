@@ -1,16 +1,17 @@
 {
   "name": "i18n-openai",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Automatic i18n translation using openai",
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "clean": "tsc --build --clean",
-    "test": "mocha -r ts-node/register 'test/**/*.ts'",
+    "test": "nyc --reporter=json-summary mocha -r ts-node/register 'test/**/*.ts'",
     "start": "npm run build && node dist/index.js",
     "format": "prettier --write \"src/**/*.ts\"",
-    "lint": "npx eslint ."
+    "lint": "npx eslint .",
+    "coverage:badge": "coverage-badge-creator"
   },
   "bin": {
     "i18n-openai": "./dist/index.js"
@@ -42,6 +43,7 @@
     "@typescript-eslint/eslint-plugin": "^6.3.0",
     "@typescript-eslint/parser": "^6.3.0",
     "chai": "^4.3.7",
+    "coverage-badge-creator": "^1.0.17",
     "eslint": "^8.46.0",
     "mocha": "^10.2.0",
     "mock-fs": "^5.2.0",
@@ -58,6 +60,7 @@
     "commander": "^11.0.0",
     "dotenv": "^16.3.1",
     "figlet": "^1.6.0",
+    "nyc": "^15.1.0",
     "openai": "^3.3.0"
   }
 }
