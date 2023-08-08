@@ -6,3 +6,6 @@ package-lock.json
 /public
 
 .env
+
+.nyc_output
+coverage
