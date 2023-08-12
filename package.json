@@ -1,6 +1,6 @@
 {
   "name": "i18n-openai",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "The i18n-openai NPM package simplifies and accelerates the translation of i18n JSON files using the power of OpenAI's language capabilities. With this package, developers can effortlessly bridge the language gap and provide multilingual experiences to users around the world.",
   "main": "index.js",
   "type": "commonjs",

@@ -1,4 +1,7 @@
+# 🚀 i18n-openai
+
 ![](https://github.com/danpoletaev/i18n-openai/blob/master/resources/i18n-openai.gif)
+
 
 [![npm version](https://badge.fury.io/js/i18n-openai.svg)](https://badge.fury.io/js/i18n-openai)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/danpoletaev/i18n-openai/pulls)
