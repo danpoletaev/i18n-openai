@@ -39,29 +39,54 @@ export class Translator {
     return processEachStringInObject(jsonFile, this._translateFn, locale);
   }
 
+  private fileLoading = (file: string) => {
+    const frames = ['\\', '|', '/', '-'];
+
+    let i = 0;
+    return setInterval(() => {
+      const frame = frames[i++ % frames.length];
+      process.stdout.cursorTo(0);
+      process.stdout.clearLine(0);
+      process.stdout.write(`\x1b[33m     [i18n-openai] ⏳ Translating file ${file}: ${frame}`);
+    }, 100);
+  };
+
+  private fileLoaded = (file: string, isSuccess: boolean, locale: string) => {
+    process.stdout.cursorTo(0);
+    process.stdout.clearLine(0);
+    if (isSuccess) {
+      process.stdout.write(`\x1b[32m     [i18n-openai] ✅ File ${file} translated successfully` + '\n');
+    } else {
+      process.stdout.write(
+        `\x1b[31m     [i18n-openai] ❌ There was a problem translating file: ${file}. Try again with arguments: -locales ${locale} -files ${file}` +
+          '\n',
+      );
+    }
+  };
+
   /**
    * Translates given filtered files for filtered locales and saves them
    */
   async translate() {
-    await Promise.all(
-      this._filtered.locales.map(async (locale) => {
-        const currentLocaleFolder = getPath(this._runtimePaths.LOCALES_FOLDER + '/' + locale);
+    for (const locale of this._filtered.locales) {
+      const currentLocaleFolder = getPath(this._runtimePaths.LOCALES_FOLDER + '/' + locale);
 
-        await Promise.all(
-          this._filtered.files.map(async (file) => {
-            const currentMainLocaleFile = getPath(this._runtimePaths.MAIN_LOCALE_FOLDER + '/' + file);
-            try {
-              const translateObject = await this.getTranslatedObject(currentMainLocaleFile, locale);
-              const path = getPath(currentLocaleFolder + '/' + file);
-              fs.writeFileSync(path, JSON.stringify(translateObject));
-              Logger.success(`File ${file} successfully translated for ${locale} locale`);
-            } catch (err) {
-              Logger.error(`Error while translating ${file} for ${locale} locale.`);
-              throw new Error();
-            }
-          }),
-        );
-      }),
-    );
+      Logger.localeTranslating(`Translating files for ${locale} locale:`);
+      for (const file of this._filtered.files) {
+        const fileLoading = this.fileLoading(file);
+        const currentMainLocaleFile = getPath(this._runtimePaths.MAIN_LOCALE_FOLDER + '/' + file);
+        try {
+          const translateObject = await this.getTranslatedObject(currentMainLocaleFile, locale);
+          const path = getPath(currentLocaleFolder + '/' + file);
+          fs.writeFileSync(path, JSON.stringify(translateObject));
+          clearInterval(fileLoading);
+          this.fileLoaded(file, true, locale);
+        } catch (err) {
+          clearInterval(fileLoading);
+          this.fileLoaded(file, false, locale);
+          throw new Error();
+        }
+      }
+    }
   }
 }

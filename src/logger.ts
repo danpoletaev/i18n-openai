@@ -20,6 +20,10 @@ export class Logger {
     return this.log('\x1b[33m', `⚠️`, ...text);
   }
 
+  static localeTranslating(...text: string[]) {
+    return console.log(`\x1b[36m [i18n-openai]`, '🌐', ...text);
+  }
+
   /**
    * Generic success logger
    */

@@ -1,4 +1,4 @@
-import {localeToLanguageMap} from '../resources/languages';
+import { localeToLanguageMap } from '../resources/languages';
 import { Locales } from '../interface';
 
 /**

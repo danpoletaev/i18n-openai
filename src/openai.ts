@@ -62,7 +62,9 @@ export class Openai {
    */
   async translateString(value: string, locale: string) {
     try {
-      const translatedResponse = await this._openai.createChatCompletion(this.createRequest(value, this.getLanguageLocale(locale)));
+      const translatedResponse = await this._openai.createChatCompletion(
+        this.createRequest(value, this.getLanguageLocale(locale)),
+      );
 
       if (translatedResponse.status === 200) {
         const firstChoice = translatedResponse.data.choices?.[0];

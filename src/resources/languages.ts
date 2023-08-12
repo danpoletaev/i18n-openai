@@ -185,4 +185,3 @@ export const localeToLanguageMap: { [key in Locales]: string } = {
   za: 'Zhuang',
   zu: 'Zulu',
 };
-
