@@ -1,7 +1,7 @@
-import { allLanguages } from '../resources/languages';
+import {localeToLanguageMap} from '../resources/languages';
 import { Locales } from '../interface';
 
 /**
  * Checks if passed locale exists
  */
-export const isLocaleCorrect = (locale: Locales) => allLanguages.includes(locale);
+export const isLocaleCorrect = (locale: Locales) => !!localeToLanguageMap?.[locale];

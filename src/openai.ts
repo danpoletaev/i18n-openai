@@ -45,11 +45,24 @@ export class Openai {
   }
 
   /**
+   * Gets langauge code from locale. Ex: en-US -> en, en -> en, en_US ->
+   */
+  private getLanguageLocale(locale: string): Locales {
+    if (locale.includes('-')) {
+      return locale.split('-')[0] as Locales;
+    } else if (locale.includes('_')) {
+      return locale.split('_')[0] as Locales;
+    } else {
+      return locale as Locales;
+    }
+  }
+
+  /**
    * Translates given value
    */
   async translateString(value: string, locale: string) {
     try {
-      const translatedResponse = await this._openai.createChatCompletion(this.createRequest(value, locale as Locales));
+      const translatedResponse = await this._openai.createChatCompletion(this.createRequest(value, this.getLanguageLocale(locale)));
 
       if (translatedResponse.status === 200) {
         const firstChoice = translatedResponse.data.choices?.[0];

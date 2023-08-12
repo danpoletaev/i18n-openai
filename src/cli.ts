@@ -32,7 +32,7 @@ export class CLI {
     const parsedArguments = argumentParser.getArguments();
 
     const fileProcessor = new FileProcessor(config, parsedArguments);
-    const filtered: IFiltered = await fileProcessor.getFiltered();
+    const filtered: IFiltered = fileProcessor.getFiltered();
 
     const openAi = new Openai(this._apiKey);
     const translateFn: ProcessFunction = openAi.translateString.bind(openAi);

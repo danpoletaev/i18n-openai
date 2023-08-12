@@ -90,7 +90,7 @@ npx i18n-openai -files firstFile.json,secondFile.json -locales ar,de
 
 ## Custom prompt
 
-You can specify your custom prompt to use with OpenAI for translation. Custom prompt should contain `{0}` sequence. Language is being replaced by `${0}` once request to OpenaAI is being made.
+You can specify your custom prompt to use with OpenAI for translation. Custom prompt should contain `{0}` sequence. Language is being replaced by `{0}` once request to OpenaAI is being made.
 
 Default custom prompt: `Return content translated to {0}. Keep all sequences /n. Keep all special characters. Do not return any additional information, return only translated text.`
 

@@ -1,9 +1,9 @@
-import { IParsedArguments, Locales } from '../interface';
+import { IParsedArguments } from '../interface';
 import { Command } from 'commander';
 
 /** Class for parsing program arguments */
 export class ArgumentsParser {
-  private readonly _locales: Locales[];
+  private readonly _locales: string[];
   private readonly _files: string[];
 
   constructor() {
