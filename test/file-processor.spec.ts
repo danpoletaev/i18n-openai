@@ -29,6 +29,7 @@ describe('getFiltered', () => {
       pathToLocalesFolders: 'public/locales',
       mainLocale: 'en',
       customPrompt: '',
+      model: 'gpt-3.5-turbo',
     },
     runtimePaths: {
       LOCALES_FOLDER: 'public/locales',

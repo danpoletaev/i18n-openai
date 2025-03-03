@@ -78,7 +78,7 @@ export class Translator {
         try {
           const translateObject = await this.getTranslatedObject(currentMainLocaleFile, locale);
           const path = getPath(currentLocaleFolder + '/' + file);
-          fs.writeFileSync(path, JSON.stringify(translateObject));
+          fs.writeFileSync(path, JSON.stringify(translateObject, null, 2));
           clearInterval(fileLoading);
           this.fileLoaded(file, true, locale);
         } catch (err) {

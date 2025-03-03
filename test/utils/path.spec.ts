@@ -17,6 +17,7 @@ describe('path', () => {
         mainLocale: 'en',
         pathToLocalesFolders: 'test',
         customPrompt: '',
+        model: 'gpt-3.5-turbo',
       };
       const test = getRuntimePaths(config);
       const shouldBe = {

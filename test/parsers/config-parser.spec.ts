@@ -56,6 +56,7 @@ describe('loadConfig', () => {
       skipLocales: ['default'],
       pathToLocalesFolders: 'newFolder/locales',
       customPrompt: '',
+      model: 'gpt-3.5-turbo',
     };
     before(() => {
       mock({

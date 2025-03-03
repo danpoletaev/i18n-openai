@@ -9,7 +9,8 @@ import fs from 'fs';
 export class ConfigParser {
   private readonly _config: IConfig;
   constructor(config?: PartialConfig) {
-    this._config = this.validateConfig(config ?? this.loadBaseConfig());
+    const baseConfig = this.loadBaseConfig();
+    this._config = this.validateConfig({...baseConfig, ...config});
   }
 
   /**
@@ -56,13 +57,14 @@ export class ConfigParser {
     this.validateMainLocale(config?.mainLocale ?? defaultConfig.mainLocale);
     this.validatePathToLocalesFolders(config?.pathToLocalesFolders ?? defaultConfig.pathToLocalesFolders);
 
-    const { skipLocales, mainLocale, pathToLocalesFolders, customPrompt } = defaultConfig;
+    const { skipLocales, mainLocale, pathToLocalesFolders, customPrompt, model } = defaultConfig;
 
     return {
       skipLocales: config?.skipLocales ?? skipLocales,
       mainLocale: config?.mainLocale ?? mainLocale,
       pathToLocalesFolders: config?.pathToLocalesFolders ?? pathToLocalesFolders,
       customPrompt: config?.customPrompt ?? customPrompt,
+      model: config?.model ?? model,
     };
   }
 

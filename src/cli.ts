@@ -12,9 +12,9 @@ const figlet = require('figlet');
  * Class used to handle main program flow
  */
 export class CLI {
-  private readonly _apiKey: string;
+  private readonly _apiKey: string | undefined;
 
-  constructor(apiKey: string) {
+  constructor(apiKey: string | undefined) {
     this._apiKey = apiKey;
   }
 
@@ -25,7 +25,7 @@ export class CLI {
     console.log(figlet.textSync('i18n OpenAI'));
     const argumentParser = new ArgumentsParser();
 
-    const configParser = new ConfigParser();
+    const configParser = new ConfigParser({model: argumentParser.model});
 
     const config = configParser.loadConfig();
 
@@ -34,7 +34,7 @@ export class CLI {
     const fileProcessor = new FileProcessor(config, parsedArguments);
     const filtered: IFiltered = fileProcessor.getFiltered();
 
-    const openAi = new Openai(this._apiKey);
+    const openAi = new Openai({apiKey: argumentParser.apiKey ?? this._apiKey, model: config.config.model, customPrompt: config.config.customPrompt});
     const translateFn: ProcessFunction = openAi.translateString.bind(openAi);
 
     const translator = new Translator(filtered, config.runtimePaths, translateFn);
