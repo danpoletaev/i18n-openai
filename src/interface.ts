@@ -1,9 +1,11 @@
+import { ChatModel } from "openai/resources/chat/chat";
+
 /* eslint-disable  @typescript-eslint/no-explicit-any*/
 export type ObjectType = { [key: string]: string | any[] | any };
 
 export type ObjectArrayOrString = ObjectType | string | any[];
 
-export type ProcessFunction = (str: string, locale: string) => Promise<string | null>;
+export type ProcessFunction = (str: string, locale: string) => Promise<string | null | undefined>;
 
 export type Locales =
   | 'ab'
@@ -195,6 +197,7 @@ export interface IConfig {
   mainLocale: Locales;
   pathToLocalesFolders: string;
   customPrompt: string;
+  model: ChatModel;
 }
 
 export type PartialConfig = Partial<IConfig>;
@@ -207,6 +210,8 @@ export interface IRuntimePaths {
 export interface IParsedArguments {
   locales?: string[];
   files?: string[];
+  model?: ChatModel;
+  apiKey?: string;
 }
 
 export interface IFiltered {

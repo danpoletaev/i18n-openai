@@ -36,7 +36,7 @@ npm i i18n-openai --save-dev
 
 ### Create config file (optional)
 
-You can add your custom config by creating `i18n-openai.config.json`. If no config file would be provided, default config would be used 👇
+You can add your custom config by creating `i18n-openai.config.js`. If no config file would be provided, default config would be used 👇
 
 ```js
 module.exports = {
@@ -45,14 +45,26 @@ module.exports = {
     pathToLocalesFolders: 'public/locales', // (optional)
     customPrompt:
     'Return content translated to {0}. Keep all sequences /n. Keep all special characters. Do not return any additional information, return only translated text.', // (optional)
+    model: 'gpt-3.5-turbo', // (optional)
 }
 ```
 If config file is provided, but some of the variables from config are not provided, then default values would be used.
 
-### Add OpenaAI API key to .env
-In order to use OpenAI translation, the key must be provided in .env file.
+### OpenaAI API key
+In order to use OpenAI translation, the key can be provided in .env file.
 ```js
 OPENAI_API_KEY=<your_api_key>
+```
+
+Or export API Key
+```shell
+export OPENAI_API_KEY=<your_api_key>
+npx i18n-openai 
+```
+
+Or directy in the cli
+```shell
+npx i18n-openai -apiKey <your_api_key>
 ```
 
 ### Translate
@@ -76,6 +88,11 @@ Use `-files` to specify files for translation(files are being taken from main lo
 npx i18n-openai -files firstFile.json,secondFile.json
 npx i18n-openai -files test.json
 ```
+#### Model
+Use `-model` to specify the model to use for translation':
+```shell
+npx i18n-openai -model gpt-4o
+```
 #### To see list of all available arguments in terminal use `-h`
 ```shell
 npx i18n-openai -h
@@ -92,6 +109,7 @@ npx i18n-openai -files firstFile.json,secondFile.json -locales ar,de
 | mainLocale (optional)                                   | From what locale translation would be. (Default: en)                                                                                                                                                                                                                                                                                                                      | string                                                                                                   |
 | pathToLocalesFolders (optional)                               | Relative path to locales folder (Default: public/locales)                                                                                                                                                                                                                                                                                                                                                                                                    | string                                                                                                                   |
 | customPrompt(optional)                                 | [see section custom prompt](#custom-prompt)                                                                                                                                                                                                                                                                                                                                                                                                              | string                                                                                                                   |
+| model(optional)                                 | Model to use for translation (Default: gpt-3.5-turbo)                                                                                                                                                                                                                                                                                                                                                                                            | string                                                                                                                   |
 
 ## Custom prompt
 
